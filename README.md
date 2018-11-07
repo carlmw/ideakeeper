@@ -1,44 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Idea keeper
 
-## Available Scripts
+A basic idea app using React, Redux and Redux-saga.
 
-In the project directory, you can run:
+<img width="643" src="https://user-images.githubusercontent.com/122096/48159580-7f7ef580-e2cd-11e8-823c-f0cf4373a639.png">
 
-### `npm start`
+## Approach
+I worked on this on and off throughout the day. I had 3 milestones.
 
-Runs the app in the development mode.<br>
+1. Get a simple React app rendering some fake ideas without any logic or interactions.
+2. Introduce some interactions backed by Redux for state management
+3. Persist changes to a backend using redux-saga to manage side-effects
+
+I took a TDD approach where I felt it was appropriate and aimed to produce code that is as close to production ready as I could in the time.
+
+The commit log should give you a good idea of how the project evolved from a bootstrapped React app.
+
+If you'd like me to have a go at some of the stretch requirements i'd be happy to. I'd also welcome any questions concerning my approach.
+
+## Known limitations
+
+### The backend is not as specified
+The backend API i've used does not match the one in the spec — I felt it was really important to get a working app that I could interact with and get a feel for from the outset. I've pushed all of those API calls to the edge of the app where they can be easily updated to match the requirements.
+
+### `created_date` is not set
+I would expect the backend to supply this when the idea is initially created.
+
+### Only tested in Chrome with the server running on a Mac
+I have not tested this on any other environments
+
+### Errors are not handled
+In particular the network is vulnerable to errors and these are not currently handled. The simplest solution would be to catch these errors in the corresponding saga and add a generic error component to surface them to the user.
+
+## Running the app
+
+After running `npm install` or `yarn install` in the project directory, you can start the app using `npm start` or `yarn start` — this runs the app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+There are actually two servers running the first is the standard `webpack-dev-server` while the second is `json-server` a simple prototyping RESTful backend — dummy data is inserted into the `db.json` file at the root of the project.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
