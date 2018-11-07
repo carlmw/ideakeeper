@@ -33,4 +33,25 @@ describe('ideasReducer', () => {
       body: NEW_BODY,
     });
   });
+
+  it('adds new ideas to the store', () => {
+    const NEW_ID = '2';
+    const NEW_IDEA = {
+      id: NEW_ID,
+    };
+    const NEW_IDEA_RECEIVED = { type: 'NEW_IDEA_RECEIVED', payload: NEW_IDEA };
+
+    expect(ideas(INITIAL_STATE, NEW_IDEA_RECEIVED).byId).toEqual({
+      [ID]: AN_IDEA,
+      [NEW_ID]: NEW_IDEA,
+    });
+  });
+
+  it('populates the store when ideas are received', () => {
+    const IDEAS_RECEIVED = { type: 'IDEAS_RECEIVED', payload: [AN_IDEA] };
+
+    expect(ideas({}, IDEAS_RECEIVED).byId).toEqual({
+      [ID]: AN_IDEA
+    });
+  });
 });
