@@ -18,10 +18,30 @@
 }
 
 input:local(.field) {
-  margin-bottom: 4px;
+  margin-right: 4px;
 }
 
 textarea:local(.field) {
   flex: 1;
   resize: none;
+}
+
+:local(.header) {
+  display: flex;
+  margin-bottom: 4px;
+}
+
+:local(.delete) {
+  transition: opacity 0.16s;
+  cursor: pointer;
+  opacity: 0;
+  outline: none;
+  appearance: none;
+  border: none;
+  color: grey;
+  font-size: 1em;
+}
+
+:local(.idea):hover :local(.delete) {
+  opacity: 1;
 }

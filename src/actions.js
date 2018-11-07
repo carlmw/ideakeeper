@@ -9,3 +9,4 @@ export const setBody = (id, body) => ({
 });
 
 export const addIdea = () => ({ type: 'ADD_IDEA' });
+export const deleteIdea = id => ({ type: 'DELETE_IDEA', payload: { id } });

@@ -1,5 +1,5 @@
 import { put, call, takeLatest, takeEvery, all } from 'redux-saga/effects';
-import { createIdea, updateIdea, getAllIdeas } from '../api';
+import { createIdea, updateIdea, getAllIdeas, deleteIdea } from '../api';
 
 function* addIdea() {
   const payload = yield call(createIdea);
@@ -21,10 +21,15 @@ function* initIdeas() {
  yield put({ type: 'IDEAS_RECEIVED', payload });
 }
 
+function* removeIdea({ payload: { id }}) {
+  yield call(deleteIdea, id);
+}
+
 export default function* ideasSaga() {
   yield all([
     initIdeas(),
     takeLatest('ADD_IDEA', addIdea),
+    takeEvery('DELETE_IDEA', removeIdea),
     takeEvery('SET_BODY', setBody),
     takeEvery('SET_TITLE', setTitle)
   ]);

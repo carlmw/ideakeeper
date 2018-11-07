@@ -4,10 +4,18 @@ exports[`<Idea /> renders an idea 1`] = `
 <div>
   <header>
     <input
+      autoFocus={false}
       defaultValue="Chocolate teapot"
       onBlur={[Function]}
       type="text"
     />
+    <button
+      onClick={[Function]}
+      title="Remove idea"
+      type="button"
+    >
+      ×
+    </button>
   </header>
   <textarea
     defaultValue="A reusable teapot made from dark chocolate"

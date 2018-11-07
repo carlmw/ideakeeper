@@ -9,7 +9,8 @@ describe('<Idea />', () => {
     title: 'Chocolate teapot',
     body: 'A reusable teapot made from dark chocolate',
     onTitleChange: () => {},
-    onBodyChange: () => {}
+    onBodyChange: () => {},
+    onDelete: () => {}
   };
 
   let result;
@@ -19,6 +20,14 @@ describe('<Idea />', () => {
 
   it('renders an idea', () => {
     expect(result).toMatchSnapshot();
+  });
+
+  describe('when isLatestIdea is true', () => {
+    it('auto focuses the title field', () => {
+      result.setProps({ isLatestIdea: true });
+
+      expect(result.find('input').prop('autoFocus')).toBe(true);
+    });
   });
 
   describe('when the title field blurs', () => {

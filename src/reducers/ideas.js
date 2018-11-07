@@ -1,5 +1,8 @@
+import omit from 'lodash.omit';
+
 const initialState = {
-  byId: {}
+  byId: {},
+  latestIdea: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -34,13 +37,20 @@ export default (state = initialState, { type, payload }) => {
           byId: {
             ...state.byId,
             [payload.id]: payload,
-          }
+          },
+          latestIdea: payload.id.toString(),
         }
     }
     case 'IDEAS_RECEIVED': {
       return {
         ...state,
         byId: payload.reduce((memo, idea) => ({ ...memo, [idea.id]: idea }), {})
+      };
+    }
+    case 'DELETE_IDEA': {
+      return {
+        ...state,
+        byId: omit(state.byId, [payload.id]),
       };
     }
     default:

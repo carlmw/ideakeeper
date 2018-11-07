@@ -40,11 +40,13 @@ describe('ideasReducer', () => {
       id: NEW_ID,
     };
     const NEW_IDEA_RECEIVED = { type: 'NEW_IDEA_RECEIVED', payload: NEW_IDEA };
+    const newState = ideas(INITIAL_STATE, NEW_IDEA_RECEIVED);
 
-    expect(ideas(INITIAL_STATE, NEW_IDEA_RECEIVED).byId).toEqual({
+    expect(newState.byId).toEqual({
       [ID]: AN_IDEA,
       [NEW_ID]: NEW_IDEA,
     });
+    expect(newState.latestIdea).toEqual(NEW_ID);
   });
 
   it('populates the store when ideas are received', () => {

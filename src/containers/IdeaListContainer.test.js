@@ -45,4 +45,22 @@ describe('<IdeaListContainer />', () => {
 
     expect(setBody).toHaveBeenCalledWith(ID, AN_IDEA.body);
   });
+
+  it('calls deleteIdea when onDelete is triggered', () => {
+    const deleteIdea = jasmine.createSpy('deleteIdea');
+    result.setProps({ deleteIdea });
+    result.find(MockIdea).prop('onDelete')();
+
+    expect(deleteIdea).toHaveBeenCalledWith(ID);
+  });
+
+  describe('when latestIdea matches the id of the current idea', () => {
+    it('isLatestIdea is true', () => {
+      expect(result.find(MockIdea).prop('isLatestIdea')).toBe(false);
+
+      result.setProps({ latestIdea: ID });
+
+      expect(result.find(MockIdea).prop('isLatestIdea')).toBe(true);
+    });
+  });
 });
