@@ -12,7 +12,36 @@ describe('<Idea />', () => {
     onBodyChange: () => {}
   };
 
+  let result;
+  beforeEach(() => {
+    result = shallow(<Idea {...AN_IDEA} />);
+  });
+
   it('renders an idea', () => {
-    expect(shallow(<Idea {...AN_IDEA} />)).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
+  });
+
+  describe('when the title field blurs', () => {
+    const NEW_TITLE = 'a puddle of chocolate';
+
+    it('triggers onTitleChange', () => {
+      const onTitleChange = jasmine.createSpy('onTitleChange');
+      result.setProps({ onTitleChange });
+      result.find('input').simulate('blur', { target: { value: NEW_TITLE } });
+
+      expect(onTitleChange).toHaveBeenCalledWith(NEW_TITLE);
+    });
+  });
+
+  describe('when the body field blurs', () => {
+    const NEW_BODY = 'it melted';
+
+    it('triggers onTitleChange', () => {
+      const onBodyChange = jasmine.createSpy('onTitleChange');
+      result.setProps({ onBodyChange });
+      result.find('textarea').simulate('blur', { target: { value: NEW_BODY } });
+
+      expect(onBodyChange).toHaveBeenCalledWith(NEW_BODY);
+    });
   });
 });

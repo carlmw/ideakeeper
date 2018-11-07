@@ -4,15 +4,15 @@ exports[`<Idea /> renders an idea 1`] = `
 <div>
   <header>
     <input
-      onChange={[Function]}
+      defaultValue="Chocolate teapot"
+      onBlur={[Function]}
       type="text"
-      value="Chocolate teapot"
     />
   </header>
   <textarea
+    defaultValue="A reusable teapot made from dark chocolate"
     maxLength={140}
-    onChange={[Function]}
-    value="A reusable teapot made from dark chocolate"
+    onBlur={[Function]}
   />
 </div>
 `;
