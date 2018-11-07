@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Idea /> renders an idea 1`] = `
+<div>
+  <header>
+    <input
+      onChange={[Function]}
+      type="text"
+      value="Chocolate teapot"
+    />
+  </header>
+  <textarea
+    maxLength={140}
+    onChange={[Function]}
+    value="A reusable teapot made from dark chocolate"
+  />
+</div>
+`;

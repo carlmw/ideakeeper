@@ -1,0 +1,27 @@
+:local(.idea) {
+  padding: 4px;
+  box-shadow: 0 0 2px lightgrey;
+  display: flex;
+  flex-direction: column;
+  flex-flow: column;
+}
+
+:local(.field) {
+  outline: none;
+  border: 2px solid transparent;
+  padding: 4px;
+  width: 100%;
+}
+
+:local(.field):focus {
+  border-color: lightgrey;
+}
+
+input:local(.field) {
+  margin-bottom: 4px;
+}
+
+textarea:local(.field) {
+  flex: 1;
+  resize: none;
+}
