@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setTitle, setBody } from '../actions';
 
-const IdeaList = ({ byId, onTitleChange, onBodyChange, children }) => {
+const IdeaList = ({ byId, setBody, setTitle, children }) => {
   const ideas = Object.keys(byId).map(id => (
-    children({ ...byId[id], onBodyChange, onTitleChange })
+    children({
+      ...byId[id],
+      onBodyChange: body => setBody(id, body),
+      onTitleChange: title => setTitle(id, title)
+    })
   ));
 
   return <React.Fragment>{ideas}</React.Fragment>;
@@ -13,15 +17,11 @@ const IdeaList = ({ byId, onTitleChange, onBodyChange, children }) => {
 IdeaList.propTypes = {
   byId: PropTypes.object,
   children: PropTypes.func.isRequired,
+  setBody: PropTypes.func,
+  setTitle: PropTypes.func,
 };
 
 const mapStateToProps = ({ ideas: { byId } }) => ({ byId });
-const mapDispatchToProps = dispatch => {
-  const onTitleChange = () => console.log('change title');
-  const onBodyChange = () => console.log('change body');
-
-  return { onTitleChange, onBodyChange };
-}
-const IdeaListContainer = connect(mapStateToProps, mapDispatchToProps)(IdeaList);
+const IdeaListContainer = connect(mapStateToProps, { setBody, setTitle })(IdeaList);
 
 export { IdeaListContainer as default, IdeaList };
