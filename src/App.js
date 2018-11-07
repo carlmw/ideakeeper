@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import './App.css';
+import styles from './App.css';
+import IdeaListContainer from './containers/IdeaListContainer';
+import Idea from './components/Idea';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-
+      <div className={styles.ideas}>
+        <IdeaListContainer>
+          {idea => (
+            <div key={idea.id} className={styles.tile}>
+              <Idea {...idea} />
+            </div>
+          )}
+        </IdeaListContainer>
       </div>
     );
   }

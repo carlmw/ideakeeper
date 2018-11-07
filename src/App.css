@@ -1,0 +1,12 @@
+:local(.ideas) {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0 0 10px;
+}
+
+:local(.tile) {
+  width: 150px;
+  height: 150px;
+  margin: 0 10px 10px 0;
+  display: flex;
+}
