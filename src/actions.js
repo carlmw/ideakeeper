@@ -7,3 +7,5 @@ export const setBody = (id, body) => ({
   type: 'SET_BODY',
   payload: { id, body }
 });
+
+export const addIdea = () => ({ type: 'ADD_IDEA' });
